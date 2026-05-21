@@ -152,8 +152,8 @@ setup_repo() {
     local repo_url="${REPO_BASEURL//\$basearch/$basearch}"
     
     cat > "${rootfs}/etc/yum.repos.d/azurelinux.repo" <<EOF
-[azurelinux-3-0]
-name=Azure Linux 3.0
+[azurelinux-4-0]
+name=Azure Linux 4.0
 baseurl=$repo_url
 enabled=1
 gpgcheck=$REPO_GPGCHECK
@@ -180,7 +180,7 @@ build_rootfs() {
     pkgs=$(get_package_list)
     
     log_info "Installing packages into rootfs..."
-    local dnf_cmd=("$PKG_MGR" install -y --installroot="$rootfs" --releasever=3.0 --nogpgcheck --setopt=install_weak_deps=False)
+    local dnf_cmd=("$PKG_MGR" install -y --installroot="$rootfs" --releasever=4.0 --nogpgcheck --setopt=install_weak_deps=False)
     
     # Execute package installation
     if [[ "$VERBOSE" -eq 1 ]]; then
