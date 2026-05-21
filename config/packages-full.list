@@ -1,0 +1,78 @@
+# Azure Linux 4 — Full Package List
+# Extends the core set with development tools, editors, diagnostics, etc.
+# Lines starting with # are comments, blank lines are ignored
+
+# ─── Include Core ────────────────────────────────────────────────────────────
+# The build script automatically includes packages-core.list when using "full"
+
+# ─── Development Tools ──────────────────────────────────────────────────────
+gcc
+gcc-c++
+make
+cmake
+autoconf
+automake
+libtool
+pkgconf
+git
+strace
+ltrace
+binutils
+gdb
+python3
+python3-pip
+
+# ─── Editors ─────────────────────────────────────────────────────────────────
+vim-enhanced
+nano
+tmux
+screen
+
+# ─── Networking Tools ───────────────────────────────────────────────────────
+tcpdump
+nmap
+bind-utils
+traceroute
+net-tools
+ethtool
+nftables
+iptables
+socat
+nc
+
+# ─── Diagnostics / Performance ──────────────────────────────────────────────
+htop
+iotop
+sysstat
+perf
+lsof
+strace
+pciutils
+usbutils
+dmidecode
+
+# ─── File Systems / Storage ─────────────────────────────────────────────────
+btrfs-progs
+cryptsetup
+squashfs-tools
+rsync
+
+# ─── Compression ─────────────────────────────────────────────────────────────
+zip
+unzip
+p7zip
+zstd
+
+# ─── Shell / Scripting ──────────────────────────────────────────────────────
+zsh
+bash-completion
+jq
+bc
+
+# ─── Documentation ──────────────────────────────────────────────────────────
+man-db
+man-pages
+
+# ─── Cloud / Container ──────────────────────────────────────────────────────
+cloud-init
+cloud-utils-growpart

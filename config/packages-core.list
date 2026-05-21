@@ -1,0 +1,80 @@
+# Azure Linux 4 — Core Package List
+# Minimal set for a functional live system
+# Lines starting with # are comments, blank lines are ignored
+
+# ─── Base System ─────────────────────────────────────────────────────────────
+azurelinux-release
+azurelinux-repos
+filesystem
+setup
+glibc
+glibc-common
+bash
+coreutils
+util-linux
+shadow-utils
+passwd
+grep
+sed
+gawk
+findutils
+diffutils
+which
+file
+tar
+gzip
+xz
+bzip2
+less
+procps-ng
+psmisc
+
+# ─── Init / Services ────────────────────────────────────────────────────────
+systemd
+systemd-networkd
+systemd-resolved
+systemd-udev
+dbus
+
+# ─── Package Management ─────────────────────────────────────────────────────
+tdnf
+dnf
+rpm
+
+# ─── Kernel ──────────────────────────────────────────────────────────────────
+kernel
+linux-firmware
+
+# ─── Boot / EFI ──────────────────────────────────────────────────────────────
+grub2-efi-binary
+shim
+dracut
+dracut-live
+
+# ─── Networking ──────────────────────────────────────────────────────────────
+iproute
+iputils
+openssh-server
+openssh-clients
+ca-certificates
+curl
+wget
+
+# ─── Hardware / Storage ──────────────────────────────────────────────────────
+e2fsprogs
+xfsprogs
+dosfstools
+parted
+lvm2
+mdadm
+
+# ─── Security ────────────────────────────────────────────────────────────────
+sudo
+audit
+pam
+
+# ─── Misc Essentials ────────────────────────────────────────────────────────
+vim-minimal
+nano
+hostname
+rootfiles

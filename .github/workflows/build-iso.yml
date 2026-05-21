@@ -1,0 +1,55 @@
+name: Build Azure Linux 4 ISOs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      arch:
+        description: 'Target architecture (x86_64, aarch64, all)'
+        required: true
+        default: 'all'
+      packages:
+        description: 'Extra packages to install (comma-separated)'
+        required: false
+        default: ''
+
+jobs:
+  build-iso:
+    name: Build ISO
+    runs-on: ubuntu-24.04
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU for cross-architecture builds
+        uses: docker/setup-qemu-action@v3
+        
+      - name: Build Docker Builder Image
+        run: make docker-image
+
+      - name: Build ISOs
+        run: |
+          ARGS=""
+          if [[ "${{ github.event.inputs.arch }}" != "" ]]; then
+            ARGS="--arch ${{ github.event.inputs.arch }}"
+          fi
+          if [[ "${{ github.event.inputs.packages }}" != "" ]]; then
+            ARGS="$ARGS --packages ${{ github.event.inputs.packages }}"
+          fi
+          
+          # Run the build via Docker (which uses --privileged)
+          make docker-build ARGS="$ARGS"
+
+      - name: Upload ISO Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: azurelinux-4-isos
+          path: output/*.iso
+          retention-days: 7
+          if-no-files-found: error
